@@ -1,7 +1,13 @@
-import styles from "./homepage.module.css";
+
+
 import { useWeb3 } from "@3rdweb/hooks";
 import { useEffect, useState } from "react";
 import DeployerSuperToken from "../helpers/deploy_token";
+
+
+const styles = {
+    main: "flex-col space-around justify-center"
+}
 
 export default function HomePage() {
 
@@ -42,70 +48,64 @@ export default function HomePage() {
 
     return (
         <main className={styles.main}>
-            <div className="navbar">
-                <h1>Deploy Custom SuperToken</h1>
-            </div>
+            <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            <header>
+                <nav class="px-4 lg:px-6 py-2.5 ">
+                    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+                        <a href="https://flowbite.com" class="flex items-center">
 
-            <button onClick={web3login}>Connect Metamask</button>
+                        </a>
+                        <div class="flex items-center lg:order-2">
+                            <button onClick={web3login} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Connect Metamask
+                            </button>
+                            <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"></a>
+                            <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+                                <span class="sr-only">Open main menu</span>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                                <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                        </div>
+                        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                            <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
 
-            <div className="div1">
-                <div className="div2">
-                    <h1>Contract metadata</h1>
-                    <h3>Settings</h3>
-                </div>
-                <div className="tag">
-                    <div className="tag1">
-                        <label for="text-field-1">Name</label>
-                        <input type="text" id="text-field-1" name="text-field-1" onChange={(e) => setName(e.target.value)} />
-                        <label for="text-field-2">symbol</label>
-                        <input type="text" id="text-field-2" name="text-field-2" onChange={(e) => setToken(e.target.value)} />
-                        <label for="text-field-3">Initial Supply</label>
-                        <input type="text" id="text-field-3" name="text-field-3" onChange={(e) => setCount(e.target.value)} />
+                                   <h1 className="text-white text-2xl">SUPERTOKEN DEPLOYER</h1>
+                                
+                            </ul>
+                        </div>
                     </div>
-
+                </nav>
+            </header>
+            <form class="grid h-screen place-items-center">
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                            Name
+                        </label>
+                        <input id="text-field-1" name="text-field-1" onChange={(e) => setName(e.target.value)} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" />
+                        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                    </div>
+                    <div class="w-full md:w-1/2 px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                            Symbol
+                        </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="text-field-2" name="text-field-2" onChange={(e) => setToken(e.target.value)} type="text" placeholder="" />
+                    </div>
                 </div>
-            </div>
-            <div className="div3">
-                {/* <h1>Payout Settings</h1>
-                <h3>Where should any funds generated by this contract flow to</h3>
-
-                <h1>Primary Sales</h1>
-                <h3>
-                    Determine the address that should recieve the revenue from initial
-                    sales of the assets
-                </h3> */}
-                <h1>Recipient Address</h1>
-                <input type="text" onChange={(e) => setReceiver(e.target.value)}></input>
                 <div>
-                    <button onClick={deployToken}>Deploy SuperToken</button>
+                    <label>Initial supply</label>
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="text-field-3" name="text-field-3" onChange={(e) => setCount(e.target.value)} />
+                    <label>Recipient Address</label>
+                    <input class="appearance-none block w-96 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="text-field-3" onChange={(e) => setReceiver(e.target.value)} placeholder="0x87965468755ADF"/>
                 </div>
-            </div>
-            <div>
-                {/* <h1>Network/Chain</h1>
-                <h4>
-                    Select a network to deploy this contract on.We recommend starting
-                    with a testnet
-                </h4>
-                <br />
-                <div className="div4">
+                <button onClick={deployToken}class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Deploy SuperToken
+                            </button>
+                <div className="bg-white-600">
 
-
-                    <input type="checkbox" />
-                    <h4>Add this to the dashboard</h4>
-                </div> */}
-            </div>
-            <div className="mainnets-dropdown">
-                {/* <select>
-                    {mainnets.map((mainnet) => (
-                        <option key={mainnet.id} value={mainnet.id}>
-                            {mainnet.name}
-                        </option>
-                    ))}
-                </select>
-                <button className="blue-button">Deploy</button>
-                <br />
-                <button type="button" class="btn">Configure networks</button>
-                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</button> */}
+                </div>
+                
+            </form>
             </div>
         </main>
     );
