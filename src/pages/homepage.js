@@ -48,7 +48,7 @@ export default function HomePage() {
 
     return (
         <main className={styles.main}>
-            <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            <div className="bg-warmred">
             <header>
                 <nav class="px-4 lg:px-6 py-2.5 ">
                     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
@@ -56,7 +56,7 @@ export default function HomePage() {
 
                         </a>
                         <div class="flex items-center lg:order-2">
-                            <button onClick={web3login} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <button onClick={web3login} class="bg-bb text-white font-bold py-2 px-4 rounded">
                                 Connect Metamask
                             </button>
                             <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"></a>
@@ -67,15 +67,16 @@ export default function HomePage() {
                             </button>
                         </div>
                         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                            <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-
-                                   <h1 className="text-white text-2xl">SUPERTOKEN DEPLOYER</h1>
-                                
-                            </ul>
                         </div>
                     </div>
                 </nav>
             </header>
+
+            <div className="flex mt-4 items-center justify-center font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+<h1 className=" text-5xl text-bb font-gag ">SUPERTOKEN DEPLOYER</h1>
+
+            </div>
+
             <form class="grid h-screen place-items-center">
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -93,12 +94,12 @@ export default function HomePage() {
                     </div>
                 </div>
                 <div>
-                    <label>Initial supply</label>
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name" >Initial supply</label>
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="text-field-3" name="text-field-3" onChange={(e) => setCount(e.target.value)} />
-                    <label>Recipient Address</label>
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">Recipient Address</label>
                     <input class="appearance-none block w-96 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="text-field-3" onChange={(e) => setReceiver(e.target.value)} placeholder="0x87965468755ADF"/>
                 </div>
-                <button onClick={deployToken}class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button onClick={deployToken}className="bg-bb text-white font-bold py-2 px-4 rounded">
                                 Deploy SuperToken
                             </button>
                 <div className="bg-white-600">
